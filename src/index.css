@@ -1,0 +1,102 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-ink-950: #070b14;
+  --color-ink-900: #0b1120;
+  --color-ink-850: #0f172a;
+  --color-ink-800: #141d31;
+  --color-ink-700: #1e293b;
+  --color-ink-600: #334155;
+
+  --color-accent-400: #56b6ff;
+  --color-accent-500: #2f97ec;
+  --color-accent-600: #1d76c4;
+
+  --color-sev-critical: #f2385a;
+  --color-sev-high: #ff8a3d;
+  --color-sev-medium: #f5c451;
+  --color-sev-low: #56b6ff;
+  --color-good: #34d399;
+
+  --font-sans: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Cascadia Code', 'JetBrains Mono', ui-monospace, monospace;
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    margin: 0;
+    background:
+      radial-gradient(1200px 600px at 12% -10%, rgba(47, 151, 236, 0.16), transparent 60%),
+      radial-gradient(900px 500px at 95% 0%, rgba(242, 56, 90, 0.1), transparent 55%),
+      var(--color-ink-950);
+    color: #e2e8f0;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #24304a;
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #33415c;
+    background-clip: content-box;
+  }
+}
+
+@layer components {
+  .panel {
+    @apply rounded-xl border border-white/8 bg-white/[0.025] backdrop-blur-sm;
+  }
+
+  .panel-header {
+    @apply flex items-start justify-between gap-4 border-b border-white/8 px-5 py-4;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-[11px] font-semibold tracking-wide uppercase;
+  }
+
+  .data-table {
+    @apply w-full border-collapse text-sm;
+  }
+  .data-table thead th {
+    @apply sticky top-0 z-10 bg-ink-900/95 px-4 py-2.5 text-left text-[11px] font-semibold uppercase tracking-wider text-slate-400 backdrop-blur;
+  }
+  .data-table tbody td {
+    @apply border-t border-white/5 px-4 py-2.5 align-middle text-slate-300;
+  }
+  .data-table tbody tr:hover {
+    @apply bg-white/[0.035];
+  }
+}
+
+.recharts-cartesian-axis-tick text {
+  fill: #7d8da8;
+  font-size: 11px;
+}
+.recharts-cartesian-grid line {
+  stroke: rgba(255, 255, 255, 0.055);
+}
+.recharts-tooltip-wrapper {
+  outline: none;
+}
+.recharts-polar-angle-axis-tick text {
+  fill: #93a3bd;
+  font-size: 11px;
+}
